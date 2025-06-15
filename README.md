@@ -18,7 +18,7 @@ Repositori ini adalah implementasi dari **Kriteria 1: Eksperimen Terhadap Datase
 
 Proyek ini diselesaikan melalui tiga tahapan utama:
 
-### **Tahap 1: Eksperimen Data di Notebook Jupyter**
+### **Tahap 1: Eksperimen Data di Notebook Google Colab**
 
 -   **Tujuan**: Menganalisis dan memahami dataset mentah secara mendalam, serta mencoba berbagai teknik preprocessing untuk membersihkan data.
 -   **File Terkait**: `preprocessing/Eksperimen_MSML_Rifzki.ipynb`
