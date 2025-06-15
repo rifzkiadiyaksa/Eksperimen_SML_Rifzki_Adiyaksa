@@ -1,0 +1,50 @@
+# Nama workflow
+name: Automate Preprocessing
+
+# Pemicu workflow
+on:
+  push:
+    branches:
+      - main  # Atau 'master', sesuaikan dengan nama branch utama Anda
+  workflow_dispatch: # Memungkinkan eksekusi manual dari tab Actions
+
+# Daftar pekerjaan yang akan dijalankan
+jobs:
+  # Nama pekerjaan
+  run-preprocessing:
+    # Menggunakan runner terbaru dari Ubuntu
+    runs-on: ubuntu-latest
+
+    # Langkah-langkah yang akan dieksekusi
+    steps:
+      # 1. Checkout kode dari repositori
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup environment Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # Anda bisa ganti versi python jika perlu
+
+      # 3. Install library yang dibutuhkan
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas scikit-learn
+
+      # 4. Jalankan skrip otomasi preprocessing
+      #    Memberikan argumen path input dan output yang benar sesuai struktur folder
+      - name: Run preprocessing script
+        run: |
+          python preprocessing/automate_Rifzki.py \
+            --input survey_lung_cancer_raw/survey_lung_cancer_raw.csv \
+            --output preprocessing/survey_lung_cancer_preprocessing.csv
+
+      # 5. Commit dan push file yang diperbarui ke repositori
+      #    Langkah ini akan menyimpan file preprocessing.csv yang baru secara otomatis
+      - name: Commit and push if it changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: (Automated) Update preprocessed data"
+          file_pattern: "preprocessing/survey_lung_cancer_preprocessing.csv"
