@@ -62,3 +62,32 @@ Proyek ini diselesaikan melalui tiga tahapan utama:
 5.  **Commit & Push Otomatis**: Jika eksekusi skrip menghasilkan perubahan pada file `survey_lung_cancer_preprocessing.csv`, sebuah *action* khusus (`stefanzweifel/git-auto-commit-action`) akan secara otomatis melakukan `commit` dan `push` file yang diperbarui tersebut kembali ke repositori.
 
 -   **Output Tahap Ini**: Sistem CI/CD yang fungsional, di mana file data bersih di repositori selalu terjamin sebagai versi terbaru hasil dari pemrosesan data mentah terkini.
+
+---
+
+## **Cara Mereplikasi Proyek di Google Colab**
+
+Anda dapat menjalankan dan mereplikasi proyek ini langsung di Google Colab dengan mengikuti langkah-langkah berikut:
+
+1.  **Buka Google Colab** dan buat notebook baru.
+
+2.  **Clone Repositori**
+    Jalankan perintah berikut di dalam sel kode untuk mengunduh semua file dari repositori ini ke environment Colab Anda. Ganti `[URL_REPOSITORY_ANDA]` dengan URL repositori GitHub Anda.
+
+    ```bash
+    !git clone [URL_REPOSITORY_ANDA]
+    ```
+    *Contoh:*
+    `!git clone https://github.com/rifzkiadiyaksa/eksperimen_sml_rifzki_adiyaksa.git`
+
+3.  **Buka Notebook Eksperimen**
+    Setelah proses clone selesai, gunakan panel file di sebelah kiri untuk menavigasi dan membuka notebook `Eksperimen_MSML_Rifzki.ipynb` yang berada di dalam folder `preprocessing`.
+
+4.  **Jalankan Skrip Otomasi (Opsional)**
+    Anda juga bisa menjalankan skrip `automate_Rifzki.py` secara langsung dari sel Colab untuk memverifikasi fungsionalitasnya. Pastikan untuk menyesuaikan nama folder repositori jika berbeda.
+
+    ```bash
+    !python eksperimen_sml_rifzki_adiyaksa/preprocessing/automate_Rifzki.py \
+      --input eksperimen_sml_rifzki_adiyaksa/survey_lung_cancer_raw/survey_lung_cancer_raw.csv \
+      --output eksperimen_sml_rifzki_adiyaksa/preprocessing/survey_lung_cancer_preprocessing.csv
+    ```
